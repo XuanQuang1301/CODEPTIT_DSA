@@ -1,0 +1,1 @@
+{"name":"Local: DSA06022","url":"d:\\CODE_PTIT\\DSA\\BT_CODEPTIT\\DSA06022.cpp","tests":[{"id":1741161215613,"input":"2\n5\n5 4 3 2 1\n5 \n1 1 1 1 1 ","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CODE_PTIT\\DSA\\BT_CODEPTIT\\DSA06022.cpp","group":"local","local":true}
