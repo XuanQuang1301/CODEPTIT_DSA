@@ -8,17 +8,24 @@ int main(){
         for(int i = 0; i < n; i++){
             cin >> a[i];
         }
-        for(int i = 0; i < n - 1; i++){
-            int x = -1;
-            for(int j = i + 1; j < n; j++){
-                if(a[j] > a[i]){
-                    x = a[j];
-                    break;
-                }
+        stack<int> st;
+        int r[n + 5];
+        for(int i = n - 1; i >= 0; i--){
+            while(!st.empty() && a[i] >= st.top()){
+                st.pop();
             }
-            cout << x << " ";
+            if(st.empty()){
+                r[i] = -1;
+            }
+            else{
+                r[i] = st.top();
+            }
+            st.push(a[i]);
         }
-        cout << -1;
+        for(int i = 0; i < n; i++){
+            cout << r[i] << " ";
+        }
         cout << endl;
+        
     }  
 }
