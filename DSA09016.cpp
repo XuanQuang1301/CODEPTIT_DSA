@@ -1,35 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
+int v, e;
 vector<vector<int>> adj;
-vector<int> check;
-int v, e, ok;
-void DFS(int u){
-    if(ok) return;
-    check[u] = 1;
+vector<int> vs;
+bool ok;
+void dfs(int u){
+    vs[u] = 1;
     for(auto i : adj[u]){
-        if(check[i] == 0){
-            DFS(i);
+        if(!vs[i]){
+            dfs(i);
         }
-        else if(check[i] == 1){
-            ok = 1;
+        if(vs[i] == 1){
+            ok = true;
             return;
         }
     }
-    check[u] = 2;
+    vs[u] = 2;
 }
 int main(){
     int t; cin >> t;
     while(t--){
         cin >> v >> e;
-        adj.clear(); adj.resize(v + 5);
-        check.clear(); check.resize(v + 5, 0);
-        for(int i = 0; i < e; i++){
+        adj.assign(v + 10, {});
+        vs.assign(v + 10, 0);
+        while(e--){
             int x, y; cin >> x >> y;
             adj[x].push_back(y);
+            adj[y].push_back(x);
         }
+        ok = false;
         for(int i = 1; i <= v; i++){
-            if(!ok && !check[i]){
-                DFS(i);
+            if(!ok && !vs[i]){
+                dfs(i);
             }
         }
         cout << (ok ? "YES" : "NO") << endl;
